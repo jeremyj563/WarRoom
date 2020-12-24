@@ -8,21 +8,19 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ElectronNET.API;
 
-namespace WarRoom
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
+namespace WarRoom {
+    public class Program {
+        public static void Main(string[] args) {
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
+        public static IHostBuilder CreateHostBuilder(string[] args) {
+            return Host
+                .CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => {
                     webBuilder.UseElectron(args);
                     webBuilder.UseStartup<Startup>();
                 });
+        }
     }
 }
